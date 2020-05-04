@@ -1,0 +1,32 @@
+<div>
+    <br>
+    <div class="spacer"></div>
+    <a  href="/camp"  class="text-danger">
+      <span> Go to DashBoard </span>
+      </a>
+    
+        <a [routerLink]="['/admin/addcamp']" class="text-danger">Add New Camp</a>
+
+        <button type="button"  class="text-danger" (click)="logout()" *ngIf="auth.isAuthenticated()">LogOut</button>
+    
+<div class="card" *ngFor="let camps of camp">
+    <div><img src="{{source+camps.ImageURL}}"
+        [style.width.px]="imageWidth" 
+        [style.margin-left.px]="imageMargin"
+        [style.margin-top.px]="marginTop"
+        [style.height.px]="imageHeight"></div>
+    <h2 class="mydiv">{{camps.Name}}</h2>
+    <div>Price :{{camps.Price |currency:'INR'}}</div>
+    <div>Location :{{camps.Location}}</div>
+    <div>Capacity :{{camps.Capacity}}</div>
+    <div>Description :{{camps.Description}}</div>
+    <div> <pm-star [rating]='camps.Rating'></pm-star> </div>
+    <br>
+    <div>
+        <a  [routerLink]="['/admin/edit',camps.CampId]" class="text-warning">Edit/Delete</a>
+    </div>
+    
+</div>
+<br>
+
+</div>

@@ -1,0 +1,65 @@
+<br><br>
+<form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    
+      <div class="form-group">
+        <label for="name">Camp Name</label>
+        <input type="text" class="form-control"  formControlName="name" [class.is-invalid]="
+        addForm.get('name').invalid && addForm.get('name').touched">
+        
+        <div *ngIf="addForm.get('name').invalid && addForm.get('name').touched">
+            <small *ngIf="addForm.get('name').errors?.required" class="text-danger">Required</small>
+            <small *ngIf="addForm.get('name').errors?.minlength" class="text-danger">Minimum length should be 3</small>
+            <small *ngIf="addForm.get('name').errors?.pattern" class="text-danger">String only</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" class="form-control" name="price" formControlName="price"[class.is-invalid]="
+        addForm.get('price').invalid && addForm.get('price').touched">
+        <small [class.d-none]="addForm.get('price').valid ||addForm.get('price').untouched" class="text-danger">Required</small>
+        
+      </div>
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" class="form-control" name="location" formControlName="location"[class.is-invalid]="
+        addForm.get('location').invalid && addForm.get('location').touched">
+        <small [class.d-none]="addForm.get('location').valid ||addForm.get('location').untouched" class="text-danger">Required</small>
+      </div>
+      <div class="form-group">
+        <label for="capacity">Capacity</label>
+        <input type="number" class="form-control" name="capacity" formControlName="capacity"[class.is-invalid]="
+        addForm.get('capacity').invalid && addForm.get('capacity').touched">
+    <small [class.d-none]="addForm.get('capacity').valid ||addForm.get('capacity').untouched" class="text-danger">Required</small>
+        
+      </div>
+      <div class="form-group">
+        <label for="description">description</label>
+        <input type="text" class="form-control" name="description" formControlName="description"[class.is-invalid]="
+        addForm.get('description').invalid && addForm.get('description').touched">
+        <small [class.d-none]="addForm.get('description').valid ||addForm.get('description').untouched" class="text-danger">Required</small>
+        
+      </div>
+
+      <div class="form-group">
+        <label for="rating">Rating</label>
+        <input type="number" placeholder="Rating 1 to 5" step="0.01" min="0" max="10" class="form-control" name="rating" formControlName="rating"[class.is-invalid]="
+        addForm.get('rating').invalid && addForm.get('rating').touched">
+        <small [class.d-none]="addForm.get('rating').valid ||addForm.get('rating').untouched" class="text-danger">Required</small>
+        
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlFile1">Browse Image </label>
+        <input type="file" accept="image/x-png,image/gif,image/jpeg" class="form-control-file" id="exampleFormControlFile1" #event (change)="fileEvent(event)">
+      </div>
+
+      <div class="form-group">
+        <label for="file">Image</label>
+        <input type="text" class="form-control"  formControlName="imageURL"[class.is-invalid]="
+        addForm.get('imageURL').invalid && addForm.get('imageURL').touched">
+        <small [class.d-none]="addForm.get('imageURL').valid ||addForm.get('imageURL').untouched" class="text-danger">Required</small>
+        
+      </div>
+      
+    <button [disabled]='!addForm.valid' type="submit" class="btn btn-primary">ADD CAMP</button>&nbsp;
+    <button  type="button" class="btn btn-primary" (click)="onCancel()">Cancel</button>
+  </form>

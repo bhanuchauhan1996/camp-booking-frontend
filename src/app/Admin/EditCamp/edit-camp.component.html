@@ -1,0 +1,69 @@
+<br><br>
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    
+    <div class="form-group">
+        <label for="CampId">Camp Id</label>
+        <input type="number" class="form-control" name="campId" formControlName="campId">
+      </div>
+      <div class="form-group">
+        <label for="name">Camp Name</label>
+        <input type="text" class="form-control"  formControlName="name" [class.is-invalid]="
+        editForm.get('name').invalid && editForm.get('name').touched">
+        
+        <div *ngIf="editForm.get('name').invalid && editForm.get('name').touched">
+            <small *ngIf="editForm.get('name').errors?.required" class="text-danger">Required</small>
+            <small *ngIf="editForm.get('name').errors?.minlength" class="text-danger">Minimum length should be 3</small>
+            <small *ngIf="editForm.get('name').errors?.pattern" class="text-danger">String only</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" class="form-control" name="price" formControlName="price"[class.is-invalid]="
+        editForm.get('price').invalid && editForm.get('price').touched">
+        <small [class.d-none]="editForm.get('price').valid ||editForm.get('price').untouched" class="text-danger">Required</small>
+        
+      </div>
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" class="form-control" name="location" formControlName="location"[class.is-invalid]="
+        editForm.get('location').invalid && editForm.get('location').touched">
+        <small [class.d-none]="editForm.get('location').valid ||editForm.get('location').untouched" class="text-danger">Required</small>
+      </div>
+      <div class="form-group">
+        <label for="capacity">Capacity</label>
+        <input type="number" class="form-control" name="capacity" formControlName="capacity"[class.is-invalid]="
+        editForm.get('capacity').invalid && editForm.get('capacity').touched">
+    <small [class.d-none]="editForm.get('capacity').valid ||editForm.get('capacity').untouched" class="text-danger">Required</small>
+        
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" name="description" formControlName="description"[class.is-invalid]="
+        editForm.get('description').invalid && editForm.get('description').touched">
+        <small [class.d-none]="editForm.get('description').valid ||editForm.get('description').untouched" class="text-danger">Required</small>
+        
+      </div>
+      <div class="form-group">
+        <label for="rating">Rating</label>
+        <input type="number" placeholder="Rating 1 to 5 " step="0.01" min="0" max="10" class="form-control" name="rating" formControlName="rating"[class.is-invalid]="
+        editForm.get('rating').invalid && editForm.get('rating').touched">
+        <small [class.d-none]="editForm.get('rating').valid ||editForm.get('rating').untouched" class="text-danger">Required</small>
+        
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlFile1">Browse Image </label>
+        <input type="file" accept="image/x-png,image/gif,image/jpeg" class="form-control-file" id="exampleFormControlFile1" #event (change)="fileEvent(event)">
+      </div>
+
+      <div class="form-group">
+        <label for="file">Image</label>
+        <input type="text" class="form-control"  formControlName="imageURL"[class.is-invalid]="
+        editForm.get('imageURL').invalid && editForm.get('imageURL').touched">
+        <small [class.d-none]="editForm.get('imageURL').valid ||editForm.get('imageURL').untouched" class="text-danger">Required</small>
+        
+      </div>
+      
+    <button [disabled]='!editForm.valid' type="submit" class="btn btn-primary">EDIT CAMP</button>&nbsp;
+    <button  type="button" class="btn btn-primary" (click)="onDelete()">Delete CAMP</button> &nbsp;
+    <button  type="button" class="btn btn-primary" (click)="onCancel()">Cancel</button>
+  </form>

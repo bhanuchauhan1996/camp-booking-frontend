@@ -1,0 +1,68 @@
+<br><br>
+<form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="CampId">Camp Id</label>
+      <input type="number" class="form-control" name="campId" formControlName="campId">
+    </div>
+    <div class="form-group">
+        <label for="CheckIn">Check In</label>
+        <input type="text" class="form-control" name="checkIn"formControlName="checkIn">
+      </div>
+      <div class="form-group">
+        <label for="CheckOut">Check Out</label>
+        <input type="text" class="form-control" name="checkOut" formControlName="checkOut">
+      </div>
+      <div class="form-group">
+        <label for="TotalDays">Total Days</label>
+        <input type="number" class="form-control" name="totalDays"formControlName="totalDays">
+      </div>
+      <div class="form-group">
+        <label for="ContactNo">Contact No</label>
+        <input type="text" class="form-control" name="contactNo" formControlName="contactNo" [class.is-invalid]="
+        bookingForm.get('contactNo').invalid && bookingForm.get('contactNo').touched" >
+        <!-- <small [class.d-none]="bookingForm.get('contactNo').valid ||bookingForm.get('contactNo').untouched" class="text-danger">Contact is required</small> -->
+        <div *ngIf="bookingForm.get('contactNo').invalid && bookingForm.get('contactNo').touched">
+            <small *ngIf="bookingForm.get('contactNo').errors?.required" class="text-danger">Required</small>
+            <small *ngIf="bookingForm.get('contactNo').errors?.minlength" class="text-danger">Contact  length should be 10</small>
+            <small *ngIf="bookingForm.get('contactNo').errors?.pattern" class="text-danger">and number only</small>
+        </div>
+      </div>
+     
+      <div class="form-group">
+        <label for="BillAddress">Bill Address</label>
+        <input type="text" class="form-control" name="billAddress" formControlName="billAddress"[class.is-invalid]="
+        bookingForm.get('billAddress').invalid && bookingForm.get('billAddress').touched">
+        <small [class.d-none]="bookingForm.get('billAddress').valid ||bookingForm.get('billAddress').untouched" class="text-danger">BillAddress is required</small>
+        
+      </div>
+      <div class="form-group">
+        <label for="State">State</label>
+        <input type="text" class="form-control" name="state" formControlName="state"[class.is-invalid]="
+        bookingForm.get('state').invalid && bookingForm.get('state').touched">
+        <!-- <small [class.d-none]="bookingForm.get('state').valid ||bookingForm.get('state').untouched" class="text-danger">State is required</small> -->
+        <div *ngIf="bookingForm.get('state').invalid && bookingForm.get('state').touched">
+            <small *ngIf="bookingForm.get('state').errors?.required" class="text-danger">Required</small>
+            <small *ngIf="bookingForm.get('state').errors?.pattern" class="text-danger">Character only</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Country">Country</label>
+        <input type="text" class="form-control" name="country" formControlName="country"[class.is-invalid]="
+        bookingForm.get('country').invalid && bookingForm.get('country').touched">
+        <!-- <small [class.d-none]="bookingForm.get('country').valid ||bookingForm.get('country').untouched" class="text-danger">Country is required</small> -->
+        <div *ngIf="bookingForm.get('country').invalid && bookingForm.get('country').touched">
+            <small *ngIf="bookingForm.get('country').errors?.required" class="text-danger">Required</small>
+            <small *ngIf="bookingForm.get('country').errors?.pattern" class="text-danger">Character only</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="ZIP">ZIP</label>
+        <input type="text" class="form-control" name="ZIP" formControlName="ZIP"[class.is-invalid]="
+        bookingForm.get('ZIP').invalid && bookingForm.get('ZIP').touched">
+        <small [class.d-none]="bookingForm.get('ZIP').valid ||bookingForm.get('ZIP').untouched" class="text-danger">Required</small>
+        
+      </div>
+      
+    <button [disabled]='!bookingForm.valid' type="submit" class="btn btn-primary">Submit</button>&nbsp;
+    <button  type="button" class="btn btn-primary" (click)="onCancel()">Cancel</button>
+  </form>

@@ -1,0 +1,31 @@
+<div>
+    <br>
+    <br>
+    <br>
+    <h1>Booking Details</h1>
+    
+<div class="card" >
+    <h2>Order Id : {{bookings?.OrderId}}</h2>
+    <div>Check In : {{bookings?.CheckIn|slice:0:10 }}</div>
+    <div>Check Out : {{bookings?.CheckOut|slice:0:10}}</div>
+    <div>Total Days : {{bookings?.TotalDays}}</div>
+    <div>Contact No : {{bookings?.ContactNo}}</div>
+    <div>Bill Address : {{bookings?.BillAddress}}</div>
+    <div>State : {{bookings?.State}}</div>
+    <div>Country : {{bookings?.Country}}</div>
+    <div>ZIP : {{bookings?.ZIP}}</div>
+    <div>Amount : {{bookings?.Amount | currency:'INR'}}</div>
+    <div>Booking No : {{bookings?.BookingNo}}</div>
+    
+    <br>
+    <div>
+        <button  type="submit" class="btn btn-primary" (click)="onSubmit()">Delete Booking</button>&nbsp;
+        <button  type="submit" class="btn btn-primary" (click)="onCancel()">Cancel</button>&nbsp;
+    </div>
+</div>
+
+<br>
+<div>
+    <a  [routerLink]="['/camp']" class="text-danger"> Back to Home</a>
+</div>
+</div>

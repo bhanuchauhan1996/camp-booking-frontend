@@ -1,0 +1,19 @@
+<br><br>
+<div><h3>Manage Your Booking</h3></div><br>
+
+<div>
+    <form (ngSubmit)="onSubmit()" [formGroup]="manageForm">
+        <div class="form-group">
+            <input type="text" class="form-control" name="bookingNo" formControlName="bookingNo"  
+             placeholder="Enter Booking Number" [class.is-invalid]="
+             manageForm.get('bookingNo').invalid && manageForm.get('bookingNo').touched">
+             <small [class.d-none]="manageForm.get('bookingNo').valid ||manageForm.get('bookingNo').untouched" class="text-danger">Required</small>
+             
+           </div>
+          
+          <button [disabled]='!manageForm.valid'  type="submit" class="btn btn-primary">Fetch Booking</button>&nbsp;
+    <button  type="button" class="btn btn-primary" (click)="onCancel()">Cancel</button>
+    </form>
+    <br>
+    <div *ngIf="isValid" class="alert alert-danger">Invalid Booking Number</div>
+</div>

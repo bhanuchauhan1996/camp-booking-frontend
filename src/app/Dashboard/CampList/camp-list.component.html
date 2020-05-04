@@ -1,0 +1,53 @@
+<div>
+    <br>
+    
+    <div class="search-container">
+        <form >
+            
+            <label for="checkIn">Check In &nbsp;</label>
+          <input type="date" class="datepicker"  placeholder="DD-MON-YYYY" name="checkIn" #checkIn (focusout)="getCheckIn(checkIn)" >&nbsp;
+          <label for="checkOut">Check Out &nbsp;</label>
+          <input type="date" class="datepicker"  placeholder="DD-MON-YYYY" name="checkOut" #checkOut (focusout)="getCheckOut(checkOut)" >&nbsp;
+          <button type="submit" (click)="searchCamp()">Search</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a  href="/camp/manage"  class="text-danger">
+            <span> Manage Booking </span>
+            </a>
+           
+              
+        </form>
+        
+      </div>
+      
+<div class="card" *ngFor="let camps of camp|slice:startIndex:endIndex">
+    <div><img src="{{source+camps.ImageURL}}"
+        [style.width.px]="imageWidth" 
+        [style.margin-left.px]="imageMargin"
+        [style.margin-top.px]="marginTop"
+        [style.height.px]="imageHeight"></div>
+    <h2 class="mydiv">{{camps.Name}}</h2>
+    <div>Price :{{camps.Price |currency:'INR'}}</div>
+    <div>Location :{{camps.Location}}</div>
+    <div>Capacity :{{camps.Capacity}}</div>
+    <div>Description :{{camps.Description}}</div>
+    <div> <pm-star [rating]='camps.Rating'></pm-star> </div>
+    <div>
+        <a  [routerLink]="['/camp/book',camps.CampId]">Book Now</a>
+    </div>
+    <br>
+</div>
+<br>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <!-- <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a> -->
+     
+      <li *ngFor="let item of getArrayFromNumber(camp?.length);let items=index" class="page-link"><a class="page-link" (click)="updateIndex(items)"><span class="active">{{items + 1}}</span></a></li>
+      <!-- <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&raquo;</span>
+        </a> -->
+    </ul>
+  </nav>
+</div>

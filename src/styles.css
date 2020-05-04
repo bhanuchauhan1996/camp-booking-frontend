@@ -1,1 +1,61 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.min.css";
+
+body{
+    background-color: aqua;
+}
+.hoverwell:hover {
+    background-color: #485563;
+    cursor: pointer;
+  }
+  .card{
+      background-color: rgb(94, 77, 243);
+      font-size: medium;
+      margin-top: 20px;
+      color: white;
+  }
+  .container {
+    padding-top: 10px;
+  }
+  
+  .pointable {
+    cursor: pointer;
+  }
+  
+  button {
+    color: #555;
+  }
+  
+  [hidden] {
+    display: none !important;
+  }
+  
+  .toast-success {
+    background-color: #51a351;
+  }
+  .toast-error {
+    background-color: #bd362f;
+  }
+  .toast-info {
+    background-color: #2f96b4;
+  }
+  .toast-warning {
+    background-color: #f89406;
+  }
+  
+  a,
+  a:visited,
+  a:hover {
+    color: white;
+    text-decoration:underline;
+    margin-right: 50px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .mydiv{
+    margin-top: -200px;
+  }

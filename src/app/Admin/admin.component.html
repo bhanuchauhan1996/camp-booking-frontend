@@ -1,0 +1,29 @@
+<br><br>
+<div><h3>Admin Login</h3></div><br>
+
+<div>
+    <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+        <div class="form-group">
+            <input type="text" class="form-control" name="username"  formControlName="username"  
+             placeholder="Enter Username" [class.is-invalid]="
+             loginForm.get('username').invalid && loginForm.get('username').touched">
+             <small [class.d-none]="loginForm.get('username').valid ||loginForm.get('username').untouched" class="text-danger">Required</small>
+             
+           </div>
+           <div class="form-group">
+            <input type="text" class="form-control" name="password"  formControlName="password"  
+             placeholder="Enter Password" [class.is-invalid]="
+             loginForm.get('password').invalid && loginForm.get('password').touched">
+             <small [class.d-none]="loginForm.get('password').valid ||loginForm.get('password').untouched" class="text-danger">Required</small>
+             
+           </div>
+          
+          <button [disabled]='!loginForm.valid'  type="submit" class="btn btn-primary">Login</button>&nbsp;
+    <button  type="button" class="btn btn-primary" (click)="onCancel()">Cancel</button>
+    </form>
+    <br>
+    <div *ngIf="isValid" class="alert alert-danger">Invalid Login Credentials</div>
+    <div>
+        <a  [routerLink]="['/camp']" class="text-danger"> Back to Home</a>
+    </div>
+</div>
