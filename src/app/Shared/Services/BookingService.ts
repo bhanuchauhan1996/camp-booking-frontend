@@ -7,28 +7,30 @@ import {catchError} from 'rxjs/operators';
 @Injectable({
     providedIn:'root'
 })
+
+//this class provide all the booking related service
 export class BookingService{
     constructor(private http:HttpClient){}
     bookingNumber:string;
 
     getLatestOrder():Observable<IBooking>{
         
-        return this.http.get<IBooking>("http://localhost:49979/api/service")
+        return this.http.get<IBooking>("api/service")
         .pipe(catchError(this.handleError<IBooking>('getLatestOrder')))
       }
       getBookingByBookingNo(bookin:string):Observable<IBooking>{
-        return this.http.get<IBooking>('http://localhost:49979/api/booking?bookingNo='+bookin)
+        return this.http.get<IBooking>('api/booking?bookingNo='+bookin)
         .pipe(catchError(this.handleError<IBooking>('getBookingByBookingNo')))
       }
 
       saveBooking(booking){
           let options={headers:new HttpHeaders({'Content-Type':'application/json'})};
-         return this.http.post<IBooking>('http://localhost:49979/api/booking',booking,options)
+         return this.http.post<IBooking>('api/booking',booking,options)
           .pipe(catchError(this.handleError<IBooking>('save Booking')))
       }
 
       deleteBooking(bookin:string){
-          return this.http.delete('http://localhost:49979/api/service?id='+bookin)
+          return this.http.delete('api/service?id='+bookin)
           .pipe(catchError(this.handleError<IBooking>('save Booking')))
       }
       setBookingNo(bookingno:string)

@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     templateUrl:'./confirm-screen.component.html'
 })
+
+//This is the confirm screen component
 export class ConfirmationScreenComponent{
 
  constructor(private bookingService:BookingService){}

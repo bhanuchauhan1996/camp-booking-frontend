@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 @Component({
     templateUrl:'./manage-booking.component.html'
 })
+// This component will manage the booking
 export class ManageBookingComponent{
 
     constructor(private router:Router,private fb:FormBuilder,private bookingService:BookingService){}

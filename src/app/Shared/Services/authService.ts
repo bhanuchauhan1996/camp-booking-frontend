@@ -7,24 +7,24 @@ import { of, Observable } from 'rxjs';
 @Injectable({
     providedIn:'root'
 })
+
+// this class provide the authentication service
 export class AuthService{
     currentUser:IUser
     constructor(private http:HttpClient){}
     loginUser(userName:string,password:string):Observable<IUser>{
 
-     return this.http.get<IUser>('http://localhost:49979/api/login?username='+userName+'&password='+password)
+     return this.http.get<IUser>('api/login?username='+userName+'&password='+password)
         
-    //   this.currentUser={
-    //       Id:1,
-    //     UserName:'bhanu',
-    //     Password:'admin@123'
-    //   }  
+    
     }
 
+    // set the user
     setUser(user:IUser)
     {
         this.currentUser=user;
     }
+    // check user is authenticated or not
      isAuthenticated(){
     return !!this.currentUser;
      }
@@ -33,6 +33,7 @@ export class AuthService{
          
      }
      
+     // log out the user
      logout(){
          this.currentUser=undefined;
      }

@@ -9,6 +9,7 @@ import { CampService } from 'src/app/Shared/Services/CampService';
     templateUrl:'./add-booking.component.html'
 })
 
+// This component is used to handle the add booking
 export class AddBookingComponent{
 
    bookingForm:FormGroup;
@@ -53,10 +54,12 @@ export class AddBookingComponent{
        
     }
 
-    
+    // this method get all the controls of a form
     get registerFormControl() {
         return this.bookingForm.controls;
       }
+
+      // this method will submit the data
       onSubmit()
       {
           this.bookingService.saveBooking(this.bookingForm.getRawValue()).subscribe(()=>{
@@ -65,6 +68,7 @@ export class AddBookingComponent{
           console.log(this.bookingForm.getRawValue());
           
       }
+      // this method navigate user to camp route
       onCancel()
       {
          this.router.navigate(['/camp']);

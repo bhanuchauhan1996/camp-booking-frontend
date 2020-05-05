@@ -8,6 +8,7 @@ import { IBooking } from '../Model/BookingModel';
 
 
 @Injectable({providedIn:'root'})
+//this class provide camp related services
 export class CampService{
     
     constructor(private http:HttpClient){}
@@ -21,29 +22,29 @@ export class CampService{
   getCampById(id:number):Observable<ICamp>{
    
     let option={headers:new HttpHeaders({'Authorization': 'Basic ' + btoa(this.username + ':' + this.password)})};
-      return this.http.get<ICamp>(`http://localhost:49979/api/camp/${id}`,option)
+      return this.http.get<ICamp>(`/api/camp/${id}`,option)
       .pipe(catchError(this.handleError<ICamp>('getCamp')))
   }
 
   getCamps():Observable<ICamp[]>{
-    return this.http.get<ICamp[]>("http://localhost:49979/api/dashboard")
+    return this.http.get<ICamp[]>("api/dashboard")
     .pipe(catchError(this.handleError<ICamp[]>('getCamps',[])))
   }
 
   getAllCamps():Observable<ICamp[]>{
     let option={headers:new HttpHeaders({'Authorization': 'Basic ' + btoa(this.username + ':' + this.password)})};
-    return this.http.get<ICamp[]>("http://localhost:49979/api/camp",option)
+    return this.http.get<ICamp[]>("api/camp",option)
     .pipe(catchError(this.handleError<ICamp[]>('getAllCamps',[])))
   }
 
   getCampUsingSearch(checkIN:string,checkOut:string):Observable<ICamp[]>{
-      return this.http.get<ICamp[]>('http://localhost:49979/api/dashboard?checkIN='+checkIN+'&checkOut='+checkOut)
+      return this.http.get<ICamp[]>('api/dashboard?checkIN='+checkIN+'&checkOut='+checkOut)
       .pipe(catchError(this.handleError<ICamp[]>('getCampUsingSearch',[])))
     }
 
   saveCamp(camp){
     let options={headers:new HttpHeaders({'Content-Type':'application/json'})};
-   return this.http.post<IBooking>('http://localhost:49979/api/camp',camp,options)
+   return this.http.post<IBooking>('api/camp',camp,options)
     .pipe(catchError(this.handleError<IBooking>('save camp')))
 }
 setCamp(camp:ICamp){
@@ -53,12 +54,12 @@ setCamp(camp:ICamp){
 updateCamp(id:number,camp)
 {
     let options={headers:new HttpHeaders({'Content-Type':'application/json'})};
-    return this.http.put<IBooking>('http://localhost:49979/api/camp/'+id,camp,options)
+    return this.http.put<IBooking>('api/camp/'+id,camp,options)
     .pipe(catchError(this.handleError<IBooking>('update camp')))
 }
 
 deleteCamp(id:number){
-    return this.http.delete('http://localhost:49979/api/camp?id='+id)
+    return this.http.delete('api/camp?id='+id)
     .pipe(catchError(this.handleError<IBooking>('save Booking')))
 }
 

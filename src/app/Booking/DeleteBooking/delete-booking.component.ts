@@ -6,6 +6,8 @@ import { IBooking } from 'src/app/Shared/Model/BookingModel';
 @Component({
     templateUrl:'./delete-booking.component.html'
 })
+
+// This coponent is used to delete the booking
 export class DeleteBookingComponent{
 
     constructor(private bookingService:BookingService,private router:Router){}

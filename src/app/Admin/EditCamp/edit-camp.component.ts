@@ -7,6 +7,7 @@ import { CampService } from 'src/app/Shared/Services/CampService';
 @Component({
     templateUrl:'./edit-camp.component.html'
 })
+//This component is used to edit the Camp
 export class EditCampComponent{
 
     constructor(private fb:FormBuilder,private router:Router,
@@ -35,6 +36,7 @@ export class EditCampComponent{
         
     }
     
+    // call when user click submit button
     onSubmit(){
         this.campService.updateCamp(this.id,this.editForm.getRawValue()).subscribe(()=>{
             this.router.navigate(['/admin/dashboard']);
@@ -42,16 +44,21 @@ export class EditCampComponent{
         
     }
 
+    // when user click delete button
     onDelete(){
         this.campService.deleteCamp(this.id).subscribe(()=>{
             this.router.navigate(['/admin/dashboard']);
         })
     }
+
+    // call when user click cancel button
     onCancel(){
       this.router.navigate(['/admin/dashboard']);
      // console.log(this.camp);
       
     }
+
+    // used to fetch the name of file from file type
     fileEvent(fileInput: HTMLInputElement){
         this.editForm.patchValue({imageURL:fileInput.files[0].name});
      }

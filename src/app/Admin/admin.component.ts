@@ -8,10 +8,9 @@ import { AuthService } from '../Shared/Services/authService';
 @Component({
     templateUrl:'./admin.component.html'
 })
+// Represent admin 
 export class AdminComponent{
 
-   // username:string;
-  //  Password:string;
     user:IUser;
     isValid:boolean=false;
     constructor(private router:Router,private fb:FormBuilder,private camp:CampService,private authService:AuthService){}
@@ -25,6 +24,7 @@ export class AdminComponent{
        
     }
     
+    //calls on submit button click
     async onSubmit(){
 
         this.authService.loginUser(this.loginForm.value.username,this.loginForm.value.password).subscribe((data:IUser)=>{
@@ -39,6 +39,8 @@ export class AdminComponent{
         await this.delay(1000);
         this.isValid=true;
     }
+
+    // call on cancel button click
     onCancel(){
         
     this.router.navigate(['/camp']);

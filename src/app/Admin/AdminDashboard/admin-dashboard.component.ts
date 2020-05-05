@@ -7,6 +7,8 @@ import { AuthService } from 'src/app/Shared/Services/authService';
 @Component({
     templateUrl:'./admin-dashboard.component.html'
 })
+
+// This component represent the admin dashboard
 export class AdminDashBoardComponent{
 
     constructor(private campService:CampService,public auth:AuthService,private router:Router){}
@@ -22,6 +24,8 @@ export class AdminDashBoardComponent{
             this.camp=data;
         })
     }
+
+    // this method call when user clicks log out button
     logout(){
         this.auth.logout()
         this.router.navigate(['/admin']);

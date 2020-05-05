@@ -11,6 +11,7 @@ export class AddCampComponent{
     constructor(private fb:FormBuilder,private router:Router,private campService:CampService){}
     addForm:FormGroup;
 
+    // LifeCycle hook
     ngOnInit(){
         this.addForm=this.fb.group({
             name:['',[Validators.required,Validators.pattern('^[a-z A-Z]*$'),Validators.minLength(3)]],
@@ -22,6 +23,8 @@ export class AddCampComponent{
             imageURL:[{value:'',disabled:true},Validators.required]
         })
     }
+
+    // call when submit button is clicked
     onSubmit(){
         this.campService.saveCamp(this.addForm.getRawValue()).subscribe(()=>{
             this.router.navigate(['/admin/dashboard']);
@@ -29,6 +32,7 @@ export class AddCampComponent{
           
         
     }
+    // call when cancel button is clicked
     onCancel(){
       this.router.navigate(['/admin/dashboard']);
     }
